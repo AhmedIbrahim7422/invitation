@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>دعوة خطوبة | أحمد ونورهان - 2 يوليو 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(145deg, #2c1a2e 0%, #1e1a2f 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Tajawal', sans-serif;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* خلفية عائمة بتلات اللافندر */
+        .floating-petals {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .petal {
+            position: absolute;
+            background: radial-gradient(circle, #e6c8ff, #c8a2e6);
+            width: 25px;
+            height: 25px;
+            border-radius: 80% 0 80% 0;
+            transform: rotate(45deg);
+            opacity: 0.4;
+            filter: blur(1px);
+            animation: floatPetal linear infinite;
+        }
+
+        @keyframes floatPetal {
+            0% {
+                transform: translateY(-10vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.5;
+            }
+            90% {
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateY(110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* البطاقة الرئيسية */
+        .invitation-card {
+            position: relative;
+            z-index: 10;
+            max-width: 680px;
+            width: 100%;
+            background: rgba(255, 250, 245, 0.96);
+            backdrop-filter: blur(2px);
+            border-radius: 70px 40px 70px 40px;
+            box-shadow: 0 35px 65px rgba(0, 0, 0, 0.3), 0 0 0 10px rgba(200, 162, 230, 0.3), 0 0 0 13px rgba(230, 200, 255, 0.2);
+            overflow: hidden;
+            transition: all 0.4s ease;
+            animation: fadeSlideUp 0.9s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+
+        @keyframes fadeSlideUp {
+            0% {
+                opacity: 0;
+                transform: translateY(50px) scale(0.96);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* رأس البطاقة مع ظل لافندر */
+        .hero-section {
+            background: linear-gradient(135deg, #ba9cdb, #9f7bc5, #c9abdf);
+            padding: 35px 25px 30px;
+            text-align: center;
+            position: relative;
+            clip-path: polygon(0 0, 100% 0, 100% 88%, 0 100%);
+        }
+
+        .hero-section::before {
+            content: "♡";
+            font-size: 100px;
+            position: absolute;
+            bottom: -30px;
+            left: 20px;
+            color: rgba(255, 240, 245, 0.2);
+            font-family: serif;
+            pointer-events: none;
+        }
+
+        .hero-section::after {
+            content: "♡";
+            font-size: 80px;
+            position: absolute;
+            top: 5px;
+            right: 15px;
+            color: rgba(255, 240, 250, 0.2);
+            font-family: serif;
+            transform: rotate(15deg);
+        }
+
+        .arabic-title {
+            font-size: 1.9rem;
+            font-weight: 800;
+            color: #fff9f0;
+            text-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            font-weight: 400;
+            color: #f3e7ff;
+            background: rgba(80, 50, 110, 0.3);
+            display: inline-block;
+            padding: 6px 20px;
+            border-radius: 40px;
+            backdrop-filter: blur(2px);
+        }
+
+        /* محتوى الدعوة */
+        .content {
+            padding: 35px 28px 40px;
+            text-align: center;
+            background: #fffbf8;
+        }
+
+        .basmala {
+            font-size: 1.2rem;
+            color: #7d5d9e;
+            font-weight: 500;
+            margin-bottom: 18px;
+            letter-spacing: 1px;
+        }
+
+        .invite-text {
+            font-size: 1.1rem;
+            color: #2e2538;
+            font-weight: 500;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .names-container {
+            margin: 30px 0 20px;
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px 20px;
+        }
+
+        .groom-name, .bride-name {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(125deg, #7e5aa0, #b48ad3);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            text-shadow: 2px 2px 12px rgba(185, 140, 220, 0.3);
+            position: relative;
+            display: inline-block;
+        }
+
+        .and-icon {
+            font-size: 2.3rem;
+            font-weight: 600;
+            color: #c7a2e6;
+            font-family: 'Tajawal', sans-serif;
+            margin: 0 6px;
+        }
+
+        .divider-custom {
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #c2a2e0, #aa7fce, #c2a2e0, transparent);
+            margin: 20px auto;
+            border-radius: 10px;
+        }
+
+        .date-info {
+            background: #f7f0ff;
+            border-radius: 60px;
+            padding: 18px 18px;
+            margin: 20px 0 15px;
+            box-shadow: inset 0 0 0 2px #fff, 0 8px 20px rgba(150, 100, 180, 0.1);
+        }
+
+        .date-icon {
+            font-size: 1.6rem;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .date-text {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #51396b;
+            letter-spacing: 1px;
+        }
+        
+        /* العداد التنازلي الأنيق */
+        .countdown-container {
+            background: #efe4ff;
+            border-radius: 50px;
+            padding: 14px 15px;
+            margin: 12px 8px 10px 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        
+        .countdown-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #7e5f9e;
+            letter-spacing: 0.5px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .countdown-box {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .countdown-item {
+            background: #ffffffcc;
+            backdrop-filter: blur(4px);
+            border-radius: 28px;
+            padding: 10px 12px;
+            min-width: 75px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(128, 80, 140, 0.15);
+            border: 1px solid #e3ceff;
+        }
+        
+        .countdown-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #6a4792;
+            line-height: 1;
+            font-family: monospace;
+            letter-spacing: 2px;
+        }
+        
+        .countdown-label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #9f7fbd;
+            margin-top: 5px;
+            text-transform: uppercase;
+        }
+        
+        .location {
+            font-size: 1rem;
+            font-weight: 500;
+            color: #694b8b;
+            background: #f1e6fc;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 20px;
+            border-radius: 50px;
+            margin-top: 16px;
+        }
+
+        .message-heart {
+            margin-top: 30px;
+            font-size: 1rem;
+            color: #8267af;
+            font-weight: 500;
+            background: #ffffff;
+            border: 1px dashed #cfb5f0;
+            border-radius: 50px;
+            padding: 12px 20px;
+            display: inline-block;
+            width: auto;
+        }
+
+        .button-rsvp {
+            margin: 35px 0 20px;
+            display: inline-block;
+            background: linear-gradient(115deg, #b081d1, #936fbf);
+            border: none;
+            padding: 14px 34px;
+            border-radius: 50px;
+            font-family: 'Tajawal', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 18px rgba(128, 80, 160, 0.4);
+            letter-spacing: 0.5px;
+        }
+
+        .button-rsvp:hover {
+            transform: scale(1.02);
+            background: linear-gradient(115deg, #c99af0, #a07fce);
+            box-shadow: 0 12px 24px rgba(128, 80, 160, 0.5);
+        }
+
+        /* تذييل رقيق */
+        .footer-note {
+            background: #f1e9fa;
+            padding: 14px;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #6e4f95;
+            border-top: 1px solid #e5d5fc;
+            font-weight: 500;
+        }
+
+        /* موبايل رسبونسيف */
+        @media (max-width: 550px) {
+            .invitation-card {
+                border-radius: 50px 30px 50px 30px;
+            }
+            .groom-name, .bride-name {
+                font-size: 1.8rem;
+            }
+            .and-icon {
+                font-size: 1.7rem;
+            }
+            .arabic-title {
+                font-size: 1.5rem;
+            }
+            .date-text {
+                font-size: 1.2rem;
+            }
+            .content {
+                padding: 25px 20px 30px;
+            }
+            .hero-section {
+                padding: 25px 20px 20px;
+            }
+            .countdown-number {
+                font-size: 1.5rem;
+            }
+            .countdown-item {
+                min-width: 60px;
+                padding: 6px 8px;
+            }
+        }
+
+        /* زخارف لافندر إضافية */
+        .lavender-decoration {
+            position: absolute;
+            bottom: -15px;
+            left: -15px;
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle, #cba5ea 3%, transparent 70%);
+            border-radius: 50%;
+            opacity: 0.4;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .lavender-decoration-right {
+            top: -15px;
+            right: -15px;
+            width: 110px;
+            height: 110px;
+            background: radial-gradient(circle, #dbbaff 2%, transparent 70%);
+            border-radius: 50%;
+            position: absolute;
+            opacity: 0.3;
+            pointer-events: none;
+        }
+        
+        @keyframes gentlePulse {
+            0% { text-shadow: 0 0 0px #dbb6ff; }
+            100% { text-shadow: 0 0 8px #e6ccff; }
+        }
+        .groom-name, .bride-name {
+            animation: gentlePulse 2s infinite alternate;
+        }
+    </style>
+</head>
+<body>
+
+<div class="floating-petals" id="petalsContainer"></div>
+
+<div class="invitation-card">
+    <div class="hero-section">
+        <div class="arabic-title">‏بسم الله الرحمن الرحيم‏</div>
+        <div class="subtitle">يتشرف أهالي العروسين بدعوتكم</div>
+    </div>
+    
+    <div class="content">
+        <div class="basmala">💜  ليلة الفرح والبركة  💜</div>
+        <div class="invite-text">
+            لتشاركونا فرحة الخطوبة المباركة
+        </div>
+        
+        <div class="names-container">
+            <span class="groom-name">أحمد ابراهيم</span>
+            <span class="and-icon">&</span>
+            <span class="bride-name">نورهان مجدي</span>
+        </div>
+        
+        <div class="divider-custom"></div>
+        
+        <div class="date-info">
+            <div class="date-icon">📅✨</div>
+            <div class="date-text">الخميس 2 يوليو 2026</div>
+            <div class="date-text" style="font-size: 1rem; font-weight: 500;">8:00 مساءً</div>
+            <div class="location">
+                <span>📍</span> قاعة مارسيليا جاردان - القاهرة الجديدة
+            </div>
+        </div>
+        
+        <!-- عداد تنازلي متجدد -->
+        <div class="countdown-container" id="countdownWidget">
+            <div class="countdown-title">
+                <span>⏳</span> متبقي على ليلة الخطوبة <span>💍</span>
+            </div>
+            <div class="countdown-box" id="countdownBox">
+                <div class="countdown-item"><div class="countdown-number" id="days">00</div><div class="countdown-label">يوم</div></div>
+                <div class="countdown-item"><div class="countdown-number" id="hours">00</div><div class="countdown-label">ساعة</div></div>
+                <div class="countdown-item"><div class="countdown-number" id="minutes">00</div><div class="countdown-label">دقيقة</div></div>
+                <div class="countdown-item"><div class="countdown-number" id="seconds">00</div><div class="countdown-label">ثانية</div></div>
+            </div>
+        </div>
+        
+        <div class="message-heart">
+            💜  شرفنا حضوركم و مشاركتنا أجمل ليالي العمر  💜
+        </div>
+        
+        <button class="button-rsvp" id="rsvpBtn">🌸 تأكيد الحضور 🌸</button>
+        <div id="rsvpMessage" style="margin-top: 12px; font-size: 0.85rem; color: #ab85cf; font-weight: 500; min-height: 45px;"></div>
+    </div>
+    
+    <div class="footer-note">
+        ✨ مع أطيب الأمنيات من قلوب أحبتكما ✨<br>
+        دعوة خاصة بحفل الخطوبة - تشريفكم يسرنا
+    </div>
+    <div class="lavender-decoration"></div>
+    <div class="lavender-decoration-right"></div>
+</div>
+
+<script>
+    // تاريخ الخطوبة: 2 يوليو 2026 الساعة 20:00 (8 مساءً)
+    const engagementDate = new Date(2026, 6, 2, 20, 0, 0); // يوليو = 6 في JS (شهر يبدأ من 0)
+    
+    // عناصر العداد
+    const daysSpan = document.getElementById('days');
+    const hoursSpan = document.getElementById('hours');
+    const minutesSpan = document.getElementById('minutes');
+    const secondsSpan = document.getElementById('seconds');
+    
+    function updateCountdown() {
+        const now = new Date().getTime();
+        const targetTime = engagementDate.getTime();
+        const distance = targetTime - now;
+        
+        if (distance < 0) {
+            // إذا انقضى التاريخ
+            daysSpan.innerText = '00';
+            hoursSpan.innerText = '00';
+            minutesSpan.innerText = '00';
+            secondsSpan.innerText = '00';
+            const container = document.getElementById('countdownWidget');
+            if (container && !document.getElementById('passedMessage')) {
+                const passedMsg = document.createElement('div');
+                passedMsg.id = 'passedMessage';
+                passedMsg.style.marginTop = '10px';
+                passedMsg.style.fontSize = '0.85rem';
+                passedMsg.style.fontWeight = 'bold';
+                passedMsg.style.color = '#9f6ec2';
+                passedMsg.innerText = '🎉 ليلة الخطوبة بدأت! نستقبلكم بالفرحة 🎉';
+                container.appendChild(passedMsg);
+            }
+            return;
+        }
+        
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        
+        daysSpan.innerText = days < 10 ? '0' + days : days;
+        hoursSpan.innerText = hours < 10 ? '0' + hours : hours;
+        minutesSpan.innerText = minutes < 10 ? '0' + minutes : minutes;
+        secondsSpan.innerText = seconds < 10 ? '0' + seconds : seconds;
+    }
+    
+    // تحديث كل ثانية
+    updateCountdown();
+    const interval = setInterval(updateCountdown, 1000);
+    
+    // إنشاء بتلات عائمة
+    function createPetals() {
+        const container = document.getElementById('petalsContainer');
+        if (!container) return;
+        container.innerHTML = '';
+        const petalCount = 38;
+        for (let i = 0; i < petalCount; i++) {
+            const petal = document.createElement('div');
+            petal.classList.add('petal');
+            const size = Math.floor(Math.random() * 18) + 12;
+            petal.style.width = size + 'px';
+            petal.style.height = size + 'px';
+            petal.style.left = Math.random() * 100 + '%';
+            petal.style.animationDuration = Math.random() * 12 + 8 + 's';
+            petal.style.animationDelay = Math.random() * 15 + 's';
+            petal.style.opacity = Math.random() * 0.45 + 0.2;
+            petal.style.background = `radial-gradient(circle, #e3c6ff, #bf93e2)`;
+            petal.style.filter = `blur(${Math.random() * 1.5 + 0.5}px)`;
+            petal.style.transform = `rotate(${Math.random() * 70}deg)`;
+            container.appendChild(petal);
+        }
+    }
+    
+    // RSVP تفاعلي مع رسالة تأكيد
+    const rsvpBtn = document.getElementById('rsvpBtn');
+    const rsvpMessageDiv = document.getElementById('rsvpMessage');
+    let rsvpClicked = false;
+    
+    if (rsvpBtn) {
+        rsvpBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            if (!rsvpClicked) {
+                rsvpMessageDiv.innerHTML = '💜 تم استلام تأكيد حضوركم بكل حب! في انتظاركم يوم 2 يوليو 2026 لنفرح معًا 💜';
+                rsvpMessageDiv.style.opacity = '0';
+                rsvpMessageDiv.style.transform = 'translateY(5px)';
+                rsvpMessageDiv.style.transition = 'all 0.3s ease';
+                setTimeout(() => {
+                    rsvpMessageDiv.style.opacity = '1';
+                    rsvpMessageDiv.style.transform = 'translateY(0)';
+                }, 10);
+                rsvpBtn.innerText = '✅ تم تأكيد الحضور ✅';
+                rsvpBtn.style.background = '#8f72b0';
+                rsvpBtn.style.cursor = 'default';
+                rsvpBtn.disabled = true;
+                rsvpClicked = true;
+                const heartMsg = document.querySelector('.message-heart');
+                if (heartMsg) {
+                    heartMsg.style.transform = 'scale(1.02)';
+                    heartMsg.style.transition = '0.2s';
+                    setTimeout(() => { heartMsg.style.transform = 'scale(1)'; }, 300);
+                }
+            } else {
+                rsvpMessageDiv.innerHTML = '✨ سبق وأكدت حضورك! ننتظرك بفارغ الصبر ✨';
+                setTimeout(() => {
+                    if(rsvpClicked) rsvpMessageDiv.innerHTML = '💜 تم استلام تأكيد حضوركم بكل حب! في انتظاركم يوم 2 يوليو 2026 💜';
+                }, 2000);
+            }
+        });
+    }
+    
+    // تأثير النقر على الأسماء
+    const groomEl = document.querySelector('.groom-name');
+    const brideEl = document.querySelector('.bride-name');
+    
+    function addSparkle(elem) {
+        if (!elem) return;
+        elem.addEventListener('click', () => {
+            elem.style.transform = 'scale(1.05)';
+            elem.style.transition = '0.2s';
+            setTimeout(() => {
+                elem.style.transform = 'scale(1)';
+            }, 200);
+            const toastMsg = document.createElement('div');
+            toastMsg.innerText = '💜';
+            toastMsg.style.position = 'fixed';
+            toastMsg.style.fontSize = '2rem';
+            toastMsg.style.left = (elem.getBoundingClientRect().left + elem.clientWidth/2) + 'px';
+            toastMsg.style.top = (elem.getBoundingClientRect().top - 20) + 'px';
+            toastMsg.style.pointerEvents = 'none';
+            toastMsg.style.opacity = '0.9';
+            toastMsg.style.zIndex = '999';
+            document.body.appendChild(toastMsg);
+            setTimeout(() => {
+                toastMsg.style.opacity = '0';
+                toastMsg.style.transform = 'translateY(-25px)';
+                toastMsg.style.transition = 'all 0.4s';
+                setTimeout(() => toastMsg.remove(), 500);
+            }, 20);
+        });
+    }
+    addSparkle(groomEl);
+    addSparkle(brideEl);
+    
+    // ضبط الخلفية المتجاوبة
+    const setResponsiveBg = () => {
+        if(window.innerWidth < 550) {
+            document.body.style.background = 'linear-gradient(145deg, #21162b, #1a1129)';
+        } else {
+            document.body.style.background = 'linear-gradient(145deg, #2c1a2e 0%, #1e1a2f 100%)';
+        }
+    };
+    window.addEventListener('resize', setResponsiveBg);
+    setResponsiveBg();
+    
+    // إعادة إنشاء البتلات عند تغيير الحجم
+    let resizeTimer;
+    window.addEventListener('resize', function() {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+            const container = document.getElementById('petalsContainer');
+            if (container) {
+                container.innerHTML = '';
+                createPetals();
+            }
+        }, 300);
+    });
+    
+    // تهيئة البتلات والحركة على التحميل
+    window.addEventListener('load', () => {
+        createPetals();
+        const card = document.querySelector('.invitation-card');
+        if(card) {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'scale(1.01)';
+                card.style.transition = 'transform 0.25s ease';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'scale(1)';
+            });
+        }
+        
+    });
+    
+    // تنظيف العداد عند إغلاق الصفحة (اختياري)
+    window.addEventListener('beforeunload', () => {
+        if(interval) clearInterval(interval);
+    });
+</script>
+</body>
+</html>
