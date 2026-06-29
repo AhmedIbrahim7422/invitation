@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tamim's 1st Birthday!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+    <style>
+        /* ── Reset & base ── */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #e8f5e9;
+            /* soft green background */
+            font-family: 'Nunito', sans-serif;
+            padding: 20px;
+        }
+
+        /* ── Card ── */
+        .invitation-card {
+            max-width: 580px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 48px 48px 48px 48px;
+            box-shadow: 0 25px 50px -12px rgba(27, 94, 32, 0.25);
+            padding: 48px 40px 40px;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.25s ease;
+            text-align: center;
+            border: 2px solid rgba(76, 175, 80, 0.15);
+        }
+
+        .invitation-card:hover {
+            transform: translateY(-4px);
+        }
+
+        /* ── Decorative top bar ── */
+        .card-stripe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: linear-gradient(90deg, #66bb6a, #43a047, #2e7d32, #43a047, #66bb6a);
+            background-size: 200% 100%;
+            animation: shimmer 4s linear infinite;
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: -200% 0;
+            }
+            100% {
+                background-position: 200% 0;
+            }
+        }
+
+        /* ── Floating decorations ── */
+        .floating-icons {
+            position: absolute;
+            top: 16px;
+            right: 20px;
+            font-size: 24px;
+            letter-spacing: 6px;
+            opacity: 0.2;
+            pointer-events: none;
+            color: #388e3c;
+            display: flex;
+            gap: 4px;
+        }
+
+        .floating-icons span {
+            display: inline-block;
+            animation: floatY 3s ease-in-out infinite;
+        }
+
+        .floating-icons span:nth-child(2) {
+            animation-delay: 0.6s;
+        }
+        .floating-icons span:nth-child(3) {
+            animation-delay: 1.2s;
+        }
+        .floating-icons span:nth-child(4) {
+            animation-delay: 0.3s;
+        }
+        .floating-icons span:nth-child(5) {
+            animation-delay: 0.9s;
+        }
+
+        @keyframes floatY {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-6px);
+            }
+        }
+
+        /* ── Typography ── */
+        .invitation-card .sub-invite {
+            font-size: 14px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            color: #388e3c;
+            margin-bottom: 10px;
+            display: inline-block;
+            background: #e8f5e9;
+            padding: 6px 22px;
+            border-radius: 40px;
+            border: 2px dashed #81c784;
+        }
+
+        .invitation-card h1.name {
+            font-family: 'Fredoka One', cursive;
+            font-size: 68px;
+            font-weight: 400;
+            line-height: 1.05;
+            color: #1b3a1b;
+            margin-bottom: 0px;
+            letter-spacing: 1px;
+            text-shadow: 0 4px 12px rgba(46, 125, 50, 0.15);
+        }
+
+        .invitation-card .age-tag {
+            font-family: 'Fredoka One', cursive;
+            font-size: 32px;
+            font-weight: 400;
+            color: #388e3c;
+            display: inline-block;
+            margin-bottom: 8px;
+            background: #e8f5e9;
+            padding: 2px 28px;
+            border-radius: 60px;
+            border: 3px solid #a5d6a7;
+            letter-spacing: 1px;
+        }
+
+        .invitation-card .divider {
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, #66bb6a, #2e7d32, #66bb6a, transparent);
+            margin: 14px auto 20px;
+            border-radius: 10px;
+        }
+
+        /* ── Baby animal / toy row ── */
+        .toy-row {
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+            font-size: 28px;
+            margin-bottom: 14px;
+            flex-wrap: wrap;
+        }
+
+        .toy-row span {
+            display: inline-block;
+            animation: floatY 4s ease-in-out infinite;
+            background: #f1f8e9;
+            padding: 4px 10px;
+            border-radius: 30px;
+            border: 2px solid #c8e6c9;
+            line-height: 1.4;
+        }
+
+        .toy-row span:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+        .toy-row span:nth-child(3) {
+            animation-delay: 0.8s;
+        }
+        .toy-row span:nth-child(4) {
+            animation-delay: 1.2s;
+        }
+        .toy-row span:nth-child(5) {
+            animation-delay: 0.2s;
+        }
+
+        /* ── Event details ── */
+        .invitation-card .event-details {
+            font-size: 17px;
+            color: #2e4d2e;
+            line-height: 1.8;
+            margin-bottom: 4px;
+        }
+
+        .invitation-card .event-details strong {
+            font-weight: 800;
+            color: #1b3a1b;
+        }
+
+        .invitation-card .event-details .day {
+            font-weight: 800;
+            font-size: 19px;
+            color: #2e7d32;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .invitation-card .event-details .date-time {
+            font-weight: 800;
+            font-size: 20px;
+            color: #1b3a1b;
+            background: #e8f5e9;
+            display: inline-block;
+            padding: 6px 24px;
+            border-radius: 40px;
+            margin: 6px 0 8px;
+            border: 2px solid #a5d6a7;
+        }
+
+        .invitation-card .location {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1b3a1b;
+            margin-top: 6px;
+        }
+
+        .invitation-card .location span {
+            color: #4a7a4a;
+            font-weight: 600;
+        }
+
+        .invitation-card .tagline {
+            font-size: 18px;
+            font-weight: 600;
+            color: #2e4d2e;
+            margin: 18px 0 18px;
+            background: #f1f8e9;
+            padding: 12px 24px;
+            border-radius: 60px;
+            display: inline-block;
+            border: 2px solid #c8e6c9;
+        }
+
+        .invitation-card .tagline i {
+            font-style: normal;
+            display: inline-block;
+            animation: floatY 3s ease-in-out infinite;
+        }
+
+        /* ── "Little ONE" badge ── */
+        .one-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #2e7d32;
+            color: #fff;
+            font-weight: 800;
+            font-size: 15px;
+            padding: 6px 20px 6px 16px;
+            border-radius: 40px;
+            margin-bottom: 10px;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 12px rgba(46, 125, 50, 0.3);
+        }
+
+        .one-badge span {
+            font-size: 22px;
+            line-height: 1;
+        }
+
+        /* ── RSVP button ── */
+        .btn-rsvp {
+            display: inline-block;
+            margin-top: 6px;
+            padding: 18px 56px 18px 44px;
+            background: linear-gradient(135deg, #43a047, #2e7d32);
+            color: #ffffff;
+            font-size: 19px;
+            font-weight: 800;
+            border: none;
+            border-radius: 60px;
+            cursor: pointer;
+            box-shadow: 0 14px 32px -8px rgba(46, 125, 50, 0.45);
+            transition: all 0.25s ease;
+            letter-spacing: 0.8px;
+            position: relative;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        .btn-rsvp::after {
+            content: '🎈';
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 24px;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-rsvp:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 20px 40px -10px rgba(46, 125, 50, 0.55);
+        }
+
+        .btn-rsvp:hover::after {
+            transform: translateY(-50%) rotate(12deg) scale(1.2);
+        }
+
+        .btn-rsvp:active {
+            transform: scale(0.96);
+            box-shadow: 0 6px 16px -4px rgba(46, 125, 50, 0.4);
+        }
+
+        /* ── Baby footer message ── */
+        .baby-footer {
+            margin-top: 24px;
+            font-size: 15px;
+            color: #4a7a4a;
+            border-top: 2px dashed #c8e6c9;
+            padding-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .baby-footer .foot-icon {
+            font-size: 22px;
+        }
+
+        .baby-footer .foot-text {
+            font-weight: 600;
+            color: #2e4d2e;
+        }
+
+        .baby-footer .foot-text strong {
+            color: #2e7d32;
+            font-weight: 900;
+        }
+
+        /* ── Modal ── */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(27, 58, 27, 0.6);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+            padding: 20px;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.92);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .modal-box {
+            background: #ffffff;
+            max-width: 440px;
+            width: 100%;
+            border-radius: 40px;
+            padding: 40px 36px 36px;
+            box-shadow: 0 40px 80px -16px rgba(0, 0, 0, 0.4);
+            position: relative;
+            text-align: center;
+            border: 3px solid #a5d6a7;
+        }
+
+        .modal-box .modal-close {
+            position: absolute;
+            top: 14px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 28px;
+            color: #7a9a7a;
+            cursor: pointer;
+            transition: transform 0.2s, color 0.2s;
+            line-height: 1;
+        }
+
+        .modal-box .modal-close:hover {
+            color: #1b3a1b;
+            transform: rotate(90deg);
+        }
+
+        .modal-box h2 {
+            font-family: 'Fredoka One', cursive;
+            font-size: 34px;
+            font-weight: 400;
+            color: #1b3a1b;
+            margin-bottom: 2px;
+        }
+
+        .modal-box .modal-sub {
+            color: #388e3c;
+            font-weight: 700;
+            font-size: 17px;
+            margin-bottom: 16px;
+            background: #e8f5e9;
+            display: inline-block;
+            padding: 2px 20px;
+            border-radius: 40px;
+        }
+
+        .modal-box .modal-message {
+            font-size: 16px;
+            color: #2e4d2e;
+            line-height: 1.8;
+            margin-bottom: 24px;
+        }
+
+        .modal-box .modal-message strong {
+            color: #2e7d32;
+            font-weight: 800;
+        }
+
+        .modal-box .modal-message .baby-emoji-row {
+            font-size: 28px;
+            letter-spacing: 6px;
+            margin: 6px 0 4px;
+        }
+
+        .modal-box .btn-close-modal {
+            padding: 14px 48px;
+            background: #e8f5e9;
+            color: #2e7d32;
+            font-weight: 800;
+            border: 3px solid #81c784;
+            border-radius: 60px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        .modal-box .btn-close-modal:hover {
+            background: #43a047;
+            color: #fff;
+            border-color: #43a047;
+            box-shadow: 0 8px 24px -6px rgba(46, 125, 50, 0.4);
+            transform: translateY(-2px);
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 520px) {
+            .invitation-card {
+                padding: 32px 18px 28px;
+                border-radius: 32px;
+            }
+
+            .invitation-card h1.name {
+                font-size: 48px;
+            }
+
+            .invitation-card .age-tag {
+                font-size: 24px;
+                padding: 2px 18px;
+            }
+
+            .invitation-card .event-details .date-time {
+                font-size: 17px;
+                padding: 4px 14px;
+            }
+
+            .toy-row {
+                font-size: 22px;
+                gap: 8px;
+            }
+
+            .toy-row span {
+                padding: 2px 8px;
+            }
+
+            .btn-rsvp {
+                padding: 14px 40px 14px 30px;
+                font-size: 16px;
+                width: 100%;
+            }
+
+            .btn-rsvp::after {
+                right: 16px;
+                font-size: 20px;
+            }
+
+            .modal-box {
+                padding: 32px 20px 28px;
+            }
+
+            .modal-box h2 {
+                font-size: 28px;
+            }
+
+            .one-badge {
+                font-size: 13px;
+                padding: 4px 14px 4px 12px;
+            }
+
+            .one-badge span {
+                font-size: 18px;
+            }
+
+            .baby-footer {
+                font-size: 13px;
+                gap: 8px;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .invitation-card h1.name {
+                font-size: 36px;
+            }
+
+            .invitation-card .sub-invite {
+                font-size: 11px;
+                letter-spacing: 3px;
+                padding: 4px 14px;
+            }
+
+            .invitation-card .age-tag {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ─── MAIN INVITATION CARD ─── -->
+    <div class="invitation-card">
+
+        <!-- green stripe -->
+        <div class="card-stripe"></div>
+
+        <!-- floating baby icons -->
+        <div class="floating-icons">
+            <span>🧸</span>
+            <span>🍼</span>
+            <span>⭐</span>
+            <span>🦒</span>
+            <span>🎈</span>
+        </div>
+
+        <!-- content -->
+        <div class="sub-invite">🎉 You're Invited! 🎉</div>
+
+        <h1 class="name">Tamim</h1>
+        <div class="age-tag">is turning <span style="font-size:1.2em;">1</span>!</div>
+
+        <!-- toy / baby row -->
+        <div class="toy-row">
+            <span>🧸</span>
+            <span>🚼</span>
+            <span>🦁</span>
+            <span>🔷</span>
+            <span>🎂</span>
+        </div>
+
+        <!-- "Little ONE" badge -->
+        <div class="one-badge">
+            <span>🌟</span> Our Little ONE &nbsp; <span>🌟</span>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="event-details">
+            <span class="day">Saturday</span><br />
+            <span class="date-time">July 4<sup>th</sup>, 2026 &bull; 8:00 – 10:00 PM</span>
+        </div>
+
+        <div class="location">
+            MOOD CAFE<br />
+            <span>Sidi Gaber, Alexandria</span>
+        </div>
+
+        <div class="tagline">
+            <i>🎂 Cake &bull; Games &bull; Fun &bull; Surprises! 🎉</i>
+        </div>
+
+        <!-- RSVP BUTTON -->
+        <button class="btn-rsvp" id="rsvpBtn">RSVP Now</button>
+
+        <!-- baby footer -->
+        <div class="baby-footer">
+            <span class="foot-icon">🐾</span>
+            <span class="foot-text">Come celebrate <strong>Tamim's</strong> very first trip around the sun!</span>
+            <span class="foot-icon">🐾</span>
+        </div>
+    </div>
+
+    <!-- ─── MODAL ─── -->
+    <div class="modal-overlay" id="rsvpModal">
+        <div class="modal-box">
+            <button class="modal-close" id="modalCloseBtn" aria-label="Close modal">✕</button>
+
+            <h2>🎈 Yay! 🎈</h2>
+            <div class="modal-sub">Tamim's 1st Birthday Bash</div>
+
+            <div class="modal-message">
+                <div class="baby-emoji-row">🧸 🍼 🦒 ⭐</div>
+                We're so excited to celebrate <strong>Tamim</strong> turning ONE!<br /><br />
+                Bring your smiles and party energy —<br />
+                there will be <strong>cake, games, and lots of fun</strong>!<br /><br />
+                <span style="font-size:20px; display:block; margin-top:4px;">🎂🎈🎁</span>
+            </div>
+
+            <button class="btn-close-modal" id="modalConfirmBtn">I'll be there! 🎉</button>
+        </div>
+    </div>
+
+    <!-- ─── JAVASCRIPT ─── -->
+    <script>
+        (function() {
+            'use strict';
+
+            const rsvpBtn = document.getElementById('rsvpBtn');
+            const modal = document.getElementById('rsvpModal');
+            const modalCloseBtn = document.getElementById('modalCloseBtn');
+            const modalConfirmBtn = document.getElementById('modalConfirmBtn');
+
+            function openModal() {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeModal() {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            rsvpBtn.addEventListener('click', openModal);
+            modalCloseBtn.addEventListener('click', closeModal);
+
+            modalConfirmBtn.addEventListener('click', function() {
+                const originalText = modalConfirmBtn.textContent;
+                modalConfirmBtn.textContent = '✅ See you there!';
+                modalConfirmBtn.style.background = '#43a047';
+                modalConfirmBtn.style.color = '#fff';
+                modalConfirmBtn.style.borderColor = '#43a047';
+                modalConfirmBtn.style.cursor = 'default';
+
+                setTimeout(function() {
+                    closeModal();
+                    setTimeout(function() {
+                        modalConfirmBtn.textContent = originalText;
+                        modalConfirmBtn.style.background = '#e8f5e9';
+                        modalConfirmBtn.style.color = '#2e7d32';
+                        modalConfirmBtn.style.borderColor = '#81c784';
+                        modalConfirmBtn.style.cursor = 'pointer';
+                    }, 300);
+                }, 800);
+            });
+
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && modal.classList.contains('active')) {
+                    closeModal();
+                }
+            });
+
+        })();
+    </script>
+
+</body>
+</html>
